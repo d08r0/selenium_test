@@ -20,6 +20,7 @@ public class FrontTest {
     @Test
     public void TestTitle() {
         WebDriver driver = new ChromeDriver();
+
         driver.get("http://www.yandex.ru");
         System.out.println("Заголовок до поиска: " + driver.getTitle());
         WebElement searchString = driver.findElement(By.id("text"));
@@ -28,9 +29,11 @@ public class FrontTest {
         searchButton.submit();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        assertThat(driver.getTitle()).startsWith(searchText);
+        assertThat(driver.getTitle())
+                .startsWith(searchText);
+
         System.out.println("Заголовок после поиска: " + driver.getTitle());
+
         driver.quit();
     }
-
 }
